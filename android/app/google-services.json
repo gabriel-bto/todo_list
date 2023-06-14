@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "242650931896",
+    "project_id": "todo-list-bto",
+    "storage_bucket": "todo-list-bto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242650931896:android:180b3b1d5ffbf8b878ca4d",
+        "android_client_info": {
+          "package_name": "br.com.gabrielbto.todo_list"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242650931896-v42cl2qvigdqc7q9bop2e7l1sehdaq3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2tSxbP7aqcpDxifCkFt3H4VTCLu0KfEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242650931896-v42cl2qvigdqc7q9bop2e7l1sehdaq3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

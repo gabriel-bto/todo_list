@@ -11,10 +11,10 @@ class AuthModule extends TodoListModule {
       : super(
           bidings: [
             ChangeNotifierProvider(
-              create: (_) => LoginController(),
+              create: (context) => LoginController(userService: context.read()),
             ),
             ChangeNotifierProvider(
-              create: (_) => RegisterController(),
+              create: (context) => RegisterController(userService: context.read()),
             ),
           ],
           routers: {
