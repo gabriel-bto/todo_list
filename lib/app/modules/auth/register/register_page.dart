@@ -22,14 +22,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmPasswordEC = TextEditingController();
 
   @override
-  void dispose() {
-    _emailEC.dispose();
-    _passwordEC.dispose();
-    _confirmPasswordEC.dispose();
-    super.dispose();
-  }
-
-  @override
   void initState() {
     super.initState();
 
@@ -37,9 +29,16 @@ class _RegisterPageState extends State<RegisterPage> {
       context: context,
       successCallback: (notifier, listenerInstance) {
         listenerInstance.dispose();
-        Navigator.pop(context);
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _emailEC.dispose();
+    _passwordEC.dispose();
+    _confirmPasswordEC.dispose();
+    super.dispose();
   }
 
   @override

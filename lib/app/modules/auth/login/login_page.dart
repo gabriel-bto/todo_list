@@ -40,10 +40,17 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
       successCallback: (notifier, listenerInstance) {
-        //TODO: TALVEZ TIRAR
-        Messages.of(context).showInfo('Login efetuado com sucesso');
+        listenerInstance.dispose();
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _emailEC.dispose();
+    _passwordEC.dispose();
+    _emailFocus.dispose();
+    super.dispose();
   }
 
   @override
