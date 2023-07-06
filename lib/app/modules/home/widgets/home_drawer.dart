@@ -3,6 +3,7 @@ import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/app/core/auth/auth_provider.dart';
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
+import 'package:todo_list/app/modules/home/home_controller.dart';
 import 'package:todo_list/app/services/user/user_service.dart';
 import 'package:validatorless/validatorless.dart';
 
@@ -108,7 +109,10 @@ class HomeDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            onTap: () => context.read<AuthProvider>().logout(),
+            onTap: () {
+              context.read<HomeController>().deleteAllTasks();
+              context.read<AuthProvider>().logout();
+            },
             title: const Text("Sair"),
           ),
         ],

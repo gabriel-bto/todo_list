@@ -5,7 +5,8 @@ import 'package:todo_list/app/repositories/tasks/tasks_repository.dart';
 class TasksRepositoryImpl implements TasksRepository {
   final SqliteConnectionFactory _sqliteConnectionFactory;
 
-  TasksRepositoryImpl({required SqliteConnectionFactory sqliteConnectionFactory})
+  TasksRepositoryImpl(
+      {required SqliteConnectionFactory sqliteConnectionFactory})
       : _sqliteConnectionFactory = sqliteConnectionFactory;
 
   @override
@@ -43,6 +44,25 @@ class TasksRepositoryImpl implements TasksRepository {
     final conn = await _sqliteConnectionFactory.openConnection();
     final finished = task.finished ? 1 : 0;
 
-    await conn.rawUpdate('update todo set finalizado = ? where id = ?', [finished, task.id]);
+    await conn.rawUpdate(
+        'update todo set finalizado = ? where id = ?', [finished, task.id]);
+  }
+
+  @override
+  Future<void> deleteAllTasks() async {
+    final conn = await _sqliteConnectionFactory.openConnection();
+    await conn.rawDelete('''
+      delete from todo
+    ''');
+  }
+
+  @override
+  Future<void> deleteTask(TaskModel task) async {
+    final conn = await _sqliteConnectionFactory.openConnection();
+    await conn.rawDelete('''
+      delete from todo where id = ?
+    ''', [
+      task.id,
+    ]);
   }
 }

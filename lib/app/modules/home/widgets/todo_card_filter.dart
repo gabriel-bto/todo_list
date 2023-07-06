@@ -30,6 +30,12 @@ class TodoCardFilter extends StatelessWidget {
     return percent / 100;
   }
 
+  int _getTotalTask() {
+    final allTasks = totalTasksModel?.totalTasks ?? 0;
+    final allFinishedTasks = totalTasksModel?.totalTasksFinish ?? 0;
+    return allTasks - allFinishedTasks;
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -54,7 +60,7 @@ class TodoCardFilter extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "${totalTasksModel?.totalTasks ?? 0} TASKS",
+              "${_getTotalTask()} TASKS",
               style: context.titleStyle.copyWith(
                 fontSize: 10,
                 color: selected ? Colors.white : Colors.grey,

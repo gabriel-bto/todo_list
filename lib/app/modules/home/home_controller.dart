@@ -18,7 +18,8 @@ class HomeController extends DefaultChangeNotifier {
   DateTime? selectedDay;
   bool showFinishingTasks = false;
 
-  HomeController({required TasksService tasksService}) : _tasksService = tasksService;
+  HomeController({required TasksService tasksService})
+      : _tasksService = tasksService;
 
   Future<void> loadTotalTasks() async {
     final allTasks = await Future.wait([
@@ -94,8 +95,9 @@ class HomeController extends DefaultChangeNotifier {
 
   void filterByDay(DateTime date) {
     selectedDay = date;
-    filteredTasks =
-        allTasks.where((task) => DateUtils.isSameDay(task.dateTime, date)).toList();
+    filteredTasks = allTasks
+        .where((task) => DateUtils.isSameDay(task.dateTime, date))
+        .toList();
     notifyListeners();
   }
 
@@ -117,5 +119,12 @@ class HomeController extends DefaultChangeNotifier {
   void showOrHideFinishingTasks() {
     showFinishingTasks = !showFinishingTasks;
     refreshPage();
+  }
+
+  Future<void> deleteAllTasks() => _tasksService.deleteAllTasks();
+
+  Future<void> deleteTask(TaskModel task) async {
+    await _tasksService.deleteTask(task);
+    await loadTotalTasks();
   }
 }
